@@ -31,13 +31,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define __HAL_RCC_GPIOD_CLK_ENABLE() do { \
-                                            __IO uint32_t tmpreg = 0x00U; \
-                                            SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIODEN);\
-                                            /* Delay after an RCC peripheral clock enabling */ \
-                                            tmpreg = READ_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIODEN);\
-                                            UNUSED(tmpreg); \
-                                          } while(0U)
 
 /* USER CODE END PD */
 
@@ -150,6 +143,7 @@ void SystemClock_Config(void)
 static void MX_GPIO_Init(void)
 {
 	__HAL_RCC_GPIOD_CLK_ENABLE();
+
 
 }
 /* USER CODE END 4 */
