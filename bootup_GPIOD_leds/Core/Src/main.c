@@ -49,6 +49,7 @@
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 static void MX_GPIO_Init(void);
+void write_pin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -143,7 +144,12 @@ void SystemClock_Config(void)
 static void MX_GPIO_Init(void)
 {
 	__HAL_RCC_GPIOD_CLK_ENABLE();
+	write_pin(GPIOD,12,0);
 
+
+}
+void write_pin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
+{
 
 }
 /* USER CODE END 4 */
