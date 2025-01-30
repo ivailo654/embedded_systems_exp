@@ -150,7 +150,17 @@ static void MX_GPIO_Init(void)
 }
 void write_pin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
 {
+	 assert_param(IS_GPIO_PIN(GPIO_Pin));
+	 assert_param(IS_GPIO_PIN_ACTION(PinState));
 
+	 if(PinState != GPIO_PIN_RESET)
+	  {
+	    GPIOx->BSRR = GPIO_Pin;
+	  }
+	  else
+	  {
+	    GPIOx->BSRR = (uint32_t)GPIO_Pin << 16U;
+	  }
 }
 /* USER CODE END 4 */
 
