@@ -143,6 +143,7 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 static void MX_GPIO_Init(void)
 {
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
 	__HAL_RCC_GPIOD_CLK_ENABLE();
 	write_pin(GPIOD,12,0);
 
