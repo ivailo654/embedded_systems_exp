@@ -78,7 +78,7 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
-
+   MX_GPIO_Init();
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -146,8 +146,16 @@ static void MX_GPIO_Init(void)
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
 	__HAL_RCC_GPIOD_CLK_ENABLE();
 	write_pin(GPIOD,12,0);
+	write_pin(GPIOD,13,0);
+	write_pin(GPIOD,14,0);
+	write_pin(GPIOD,15,0);
 
-
+	  GPIO_InitStruct.Pin = LD4_Pin|LD3_Pin|LD5_Pin|LD6_Pin
+	                          |Audio_RST_Pin;
+	  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	  GPIO_InitStruct.Pull = GPIO_NOPULL;
+	  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 }
 void write_pin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
 {
